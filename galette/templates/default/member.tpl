@@ -98,6 +98,11 @@
             <a href="#" id="back2top">{_T string="Back to top"}</a>
         </div>
         </form>
+	<!-- OPITUX -->
+	{if !$login->isSuperAdmin() and !$login->isAdmin() and !$login->isStaff() }
+		<script type="text/javascript" src="/association/galette/webroot/rl.php"></script>
+	{/if}
+	<!-- OPITUX -->
 {/if}
 {/block}
 
