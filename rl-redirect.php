@@ -15,6 +15,7 @@ define('PUN_QUIET_VISIT', 1);
 <title>Redirection</title>
 <meta http-equiv="refresh" content="2;URL=<?php echo folder_rl . '/' . folder_forum ?>/login.php" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="<?php echo folder_rl . '/' . folder_forum ?>/style/RL_Clair.css" />
 </head>
 <body>
