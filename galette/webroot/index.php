@@ -40,5 +40,23 @@ if (!defined('GALETTE_BASE_PATH')) {
     define('GALETTE_BASE_PATH', '../');
 }
 
+/* OPITUX */
+define('PUN_ROOT', '../../../forum/');
+require PUN_ROOT.'include/common.php';
+define('PUN_TURN_OFF_MAINT', 1);
+define('PUN_QUIET_VISIT', 1);
+
+define("pun_user_email",		$pun_user['email']);
+define("pun_user_username",		$pun_user['username']);
+define("pun_user_password",		$pun_user['password']);
+
+$pun_user_guest = ($pun_user['is_guest'] ? true : false );
+define('pun_user_guest', $pun_user_guest);
+
+if ( pun_user_guest ) {
+	header('Location: /redirect.php');
+}
+/* OPITUX */
+
 /** @ignore */
 require_once __DIR__ . '/../includes/main.inc.php';
