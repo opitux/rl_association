@@ -54,7 +54,8 @@ $pun_user_guest = ($pun_user['is_guest'] ? true : false );
 define('pun_user_guest', $pun_user_guest);
 
 if ( pun_user_guest ) {
-	header('Location: /redirect.php');
+	header('Location: ../../../redirect.php');
+	exit;
 }
 /* OPITUX */
 
