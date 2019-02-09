@@ -247,6 +247,18 @@ if ('MAINT' === GALETTE_MODE && !$container->get('login')->isSuperAdmin()) {
     );
 }
 
+/* BEGIN OPITUX 
+ * 
+ * Rendre les modifs profil adhérents si on est supre admin
+ * Si ni SuperAdmin ou Admin, on impose pseudo, mail et mdp identiques au forum
+ * 
+ */
+if ($container->get('login')->isSuperAdmin() || $container->get('login')->isAdmin() || $container->get('login')->isStaff() ) {
+	define('pun_user_buro', true);
+} else {
+	define('pun_user_buro', false);
+}
+/* END OPITUX */
 
 /**
  * Redirection middleware.
