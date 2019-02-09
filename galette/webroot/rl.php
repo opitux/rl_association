@@ -1,5 +1,4 @@
-<?
-
+<?php
 define('PUN_ROOT', '../../../forum/');
 require PUN_ROOT.'include/common.php';
 define('PUN_TURN_OFF_MAINT', 1);
