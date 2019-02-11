@@ -1,4 +1,29 @@
 <?php
+/**
+ * OPITUX
+ * Liste des fichiers ajoutés ou modifés
+ * =====================================
+ *
+ * RACINE ASSO
+ * /association/index.php
+ *
+ * CORE
+ * /association/galette/webroot/themes/default/galette_local.css
+ * /association/galette/webroot/rl.php
+ * /association/galette/webroot/index.php
+ * /association/galette/templates/default/page.tpl
+ * /association/galette/templates/default/member.tpl
+ * /association/galette/templates/default/forms_types/captcha.tpl
+ * /association/galette/templates/default/footer.tpl
+ * /association/galette/webroot/themes/default/images/favicon.png
+ * /association/galette/lib/galette/entity/adherent.php
+ * /association/galette/includes/main.inc.php
+ *
+ * PLUGIN
+ * /galette/plugins/galette-plugin-paypal/templates/default/paypal_form.tpl
+ *
+ */
+
 define('RL_ROOT', '../');
 include RL_ROOT.'configRL.php';
 define('PUN_ROOT', '../'.folder_forum.'/');
