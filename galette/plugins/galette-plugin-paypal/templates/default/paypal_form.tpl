@@ -103,19 +103,29 @@
 
 $(window).on('load', function() {
 
-$( "#amount" ).after( "<div id='paypalbox' class='warningbox' style='margin:10px 0;'><b>Attention&nbsp;:</b><br />Si vous optez pour une cotisation libre ou une cotisation famille, merci de renseigner le champ \"Montant\" ci-dessus.<br /><b>La cotisation minimale est fixée à 5 euros</b>.</div>" );
+$( "#amount" ).after( "<div id='paypalbox' class='warningbox' style='margin:10px 0;'><b>Attention&nbsp;:</b><br />Pour une cotisation libre ou une cotisation famille, merci de renseigner le champ \"Montant\" ci-dessus.<br /><br /><b>La cotisation minimale est fixée à 5 euros</b>.</div>" );
 
 });
 
 $("input[name='item_number']").change(function(){
     var selected_radio = $("input[name='item_number']:checked").val();
-    if (selected_radio == '2' || selected_radio == '3'){
+	if (selected_radio == '2' || selected_radio == '3'){
         $( ".warningbox" ).remove();
         $( ".errorbox" ).remove();
     	$( '#amount' ).val('');
         $( '#amount' ).attr("placeholder", "Votre cotisation");
         $( '#amount' ).focus();
-        $( "#amount" ).after( "<div id='paypalbox' class='warningbox' style='margin:10px 0;'><b>Attention&nbsp;:</b><br />Si vous optez pour une cotisation libre ou une cotisation famille, merci de renseigner le champ \"Montant\" ci-dessus.<br /><b>La cotisation minimale est fixée à 5 euros</b>.</div>" );
+        $( "#amount" ).after( "<div id='paypalbox' class='warningbox' style='margin:10px 0;'><b>Attention&nbsp;:</b><br />Pour une cotisation libre ou une cotisation famille, merci de renseigner le champ \"Montant\" ci-dessus.<br /><br /><b>La cotisation minimale est fixée à 5 euros</b>.</div>" );
+        return false;
+    }
+	else if (selected_radio == '8' || selected_radio == '9')
+	{
+        $( ".warningbox" ).remove();
+        $( ".errorbox" ).remove();
+    	$( '#amount' ).val('');
+        $( '#amount' ).attr("placeholder", "Votre cotisation");
+        $( '#amount' ).focus();
+        $( "#amount" ).after( "<div id='paypalbox' class='warningbox' style='margin:10px 0;'><b>Attention&nbsp;:</b><br />Pour une cotisation libre ou famille + <b>inscription au Camp Itinérant 2019</b>, merci de renseigner le champ \"Montant\" ci-dessus.<br /><br /><b>La cotisation minimale est fixée à 5 euros + 5 euros par participant au Camp Itinérant.</b></div>" );
         return false;
     }
     else if (selected_radio == '5')
@@ -135,14 +145,25 @@ $("input[name='item_number']").change(function(){
 
 $(document).ready(function(){
     $("input[name='submit']").click(function(){
-    var value = $("#amount").val()
-    	if( value < 5 ) {
-    	$("#paypalbox").attr('class', 'errorbox');
-//        $( ".warningbox" ).remove();
-//        $( ".errorbox" ).remove();
-//        $( "#amount" ).after( "<div class='errorbox' style='margin:10px 0;'><b>Attention&nbsp;:</b><br /> Si vous optez pour une cotisation libre, merci renseigner le champ \"Montant\" ci-dessus<br />La cotisation minimal est fixée à 5 euros.</div>" );
-        return false;
-        }
+    var value = $("#amount").val();
+	var selected_radio = $("input[name='item_number']:checked").val();
+		if (selected_radio == '2' || selected_radio == '3') {
+	    	if( value < 5 ) {
+	    	$("#paypalbox").attr('class', 'errorbox');
+	//        $( ".warningbox" ).remove();
+	//        $( ".errorbox" ).remove();
+	//        $( "#amount" ).after( "<div class='errorbox' style='margin:10px 0;'><b>Attention&nbsp;:</b><br /> Si vous optez pour une cotisation libre, merci renseigner le champ \"Montant\" ci-dessus<br />La cotisation minimal est fixée à 5 euros.</div>" );
+	        return false;
+	        }
+		} else {
+			if( value < 10 ) {
+	    	$("#paypalbox").attr('class', 'errorbox');
+	//        $( ".warningbox" ).remove();
+	//        $( ".errorbox" ).remove();
+	//        $( "#amount" ).after( "<div class='errorbox' style='margin:10px 0;'><b>Attention&nbsp;:</b><br /> Si vous optez pour une cotisation libre, merci renseigner le champ \"Montant\" ci-dessus<br />La cotisation minimal est fixée à 5 euros.</div>" );
+	        return false;
+	        }
+		}
     });
 });
 </script>
