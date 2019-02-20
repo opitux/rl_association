@@ -1097,14 +1097,19 @@ class Adherent
                             }
                             break;
                         case 'mdp_adh':
-                            /** TODO: check password complexity, set by a preference */
-                            /** TODO: add a preference for password lenght */
+#                            /** TODO: check password complexity, set by a preference */
+#                            /** TODO: add a preference for password lenght */
+                            $checkpassword=SHA1($value);
                             if (strlen($value) < 6) {
                                 $this->errors[] = str_replace(
                                     '%i',
                                     6,
                                     _T("- The password must be of at least %i characters!")
                                 );
+#                            BEGIN MODIF OPITUX
+                            } elseif ($checkpassword != pun_user_password && !$this->isAdmin() ) {
+                                $this->errors[] = ("- Votre mot de passe doit être identique à celui du forum.");
+#                            END MODIF OPITUX
                             } elseif ($this->_self_adh !== true
                                 && (!isset($values['mdp_adh2'])
                                 || $values['mdp_adh2'] != $value)
@@ -1161,16 +1166,64 @@ class Adherent
         }
 
         // missing required fields?
+#        foreach ($required as $key => $val) {
+#            $prop = '_' . $this->fields[$key]['propname'];
+
+#            if (!isset($disabled[$key])) {
+#                $mandatory_missing = false;
+#                if (!isset($this->$prop) || $this->$prop == '') {
+#                    $mandatory_missing = true;
+#                } elseif ($key === 'titre_adh' && $this->$prop == '-1') {
+#                    $mandatory_missing = true;
+#                }
+
+#                if ($mandatory_missing === true) {
+#                    $this->errors[] = str_replace(
+#                        '%field',
+#                        '<a href="#' . $key . '">' . pun_user_email . pun_user_username . pun_user_password . $this->getFieldLabel($key) .'</a>',
+#                        _T("- Mandatory field %field empty.")
+#                    );
+#                }
+#            }
+#        }
+
+        // missing required fields?
         foreach ($required as $key => $val) {
             $prop = '_' . $this->fields[$key]['propname'];
 
             if (!isset($disabled[$key])) {
+                $pun_user_username = false;
+                $pun_user_email = false;
+                $pun_user_password = false;
                 $mandatory_missing = false;
                 if (!isset($this->$prop) || $this->$prop == '') {
                     $mandatory_missing = true;
                 } elseif ($key === 'titre_adh' && $this->$prop == '-1') {
                     $mandatory_missing = true;
                 }
+#               BEGIN MODIF OPITUX
+                 elseif ($key === 'pseudo_adh' && $this->$prop != pun_user_username || $key === 'login_adh' && $this->$prop != pun_user_username ) {
+                    $pun_user_username = true;
+                } elseif ($key === 'email_adh' && $this->$prop != pun_user_email) {
+                    $pun_user_email = true;
+                }
+
+	            if ($pun_user_username === true && !pun_user_buro ) {
+
+	                $this->errors[] = str_replace(
+	                    '%field',
+	                    '<a href="#' . $key . '">' . $this->getFieldLabel($key) .'</a>',
+	                    _T("- Le champ %field est vide ou différent de celui du forum.")
+	                );
+	                }
+
+	            if ($pun_user_email === true && !pun_user_buro ) {
+	                $this->errors[] = str_replace(
+	                    '%field',
+	                    '<a href="#' . $key . '">' . $this->getFieldLabel($key) .'</a>',
+	                    _T("- Le champ %field est vide ou différent de celui du forum.")
+	                );
+	            }
 
                 if ($mandatory_missing === true) {
                     $this->errors[] = str_replace(
@@ -1179,6 +1232,9 @@ class Adherent
                         _T("- Mandatory field %field empty.")
                     );
                 }
+
+#               END MODIF OPITUX
+
             }
         }
 
