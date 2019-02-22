@@ -97,12 +97,23 @@
             {/foreach}
             <a href="#" id="back2top">{_T string="Back to top"}</a>
         </div>
+		<!-- OPITUX -->
+		<!--
+		modif RL pour imposer l'option "affichage public" à tout nouvel inscrit
+		La case à cocher reste utilisable aux admins dans les options de Galette
+		-->
+		<input type="hidden" name="bool_display_info" id="bool_display_info" value="1" checked="checked">
+		<!-- /OPITUX -->
         </form>
 	<!-- OPITUX -->
+	<!--
+	Appel d'un script extérieur pour renseigner les pseudos, email et vérifier que
+	le mot de passe est identique à celui du forum.
+	-->
 	{if !$login->isSuperAdmin() and !$login->isAdmin() and !$login->isStaff() }
 		<script type="text/javascript" src="../rl.php"></script>
 	{/if}
-	<!-- OPITUX -->
+	<!-- /OPITUX -->
 {/if}
 {/block}
 
