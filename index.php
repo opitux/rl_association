@@ -29,8 +29,9 @@ include RL_ROOT.'configRL.php';
 define('PUN_ROOT', '../'.folder_forum.'/');
 include PUN_ROOT.'include/common.php';
 
-define('PUN_TURN_OFF_MAINT', 1);
-define('PUN_QUIET_VISIT', 1);
+// OPITUX - décommenter les 2 lignes suivantes pour décoréler le site association de la maintenance forum
+// define('PUN_TURN_OFF_MAINT', 1);
+// define('PUN_QUIET_VISIT', 1);
 
 $maintenance = 0;
 
