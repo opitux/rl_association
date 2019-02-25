@@ -3,7 +3,7 @@
 {if $login->isLogged() &&  ($login->isAdmin() or $login->isStaff())}
             <br/><a id="sysinfos" href="{path_for name="sysinfos"}">{_T string="System informations"}</a>
 {/if}
-            <!--<nav>
+            <!-- Modif RL bloc neutralise <nav>
                 <ul>
                     <li><strong>{_T string="The project: "}</strong></li>
                     <li><a href="http://galette.eu">{_T string="Website"}</a></li>
