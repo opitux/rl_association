@@ -84,7 +84,12 @@
         </p>
         <p>
             <label for="amount">{_T string="Amount"}</label>
-            <input type="text" name="amount" id="amount" value="{if $amounts|@count > 0}{$amounts[1]['amount']}{else}20{/if}"/>
+			<!--
+				OPITUX
+				Je change le type de l'input pour corriger le bug d'un caractère accentué, d'une virgule ou d'un € renseigné par l'adhérent
+				ancien input : <input type="text" name="amount" id="amount" value="{if $amounts|@count > 0}{$amounts[1]['amount']}{else}20{/if}"/>
+			-->
+            <input type="number" name="amount" id="amount" step="1" value="{if $amounts|@count > 0}{$amounts[1]['amount']}{else}20{/if}" required="required" />
         </p>
     </fieldset>
 
