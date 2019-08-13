@@ -1,0 +1,4 @@
+/galette/config/config.inc.php
+/galette/config/behavior.inc.php
+/galette/data/*
+.htaccess

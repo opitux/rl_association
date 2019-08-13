@@ -775,6 +775,9 @@ class Members
                         ),
                         new PredicateSet(
                             array(
+								// Commentaire RL Opitux
+								// Eventuellement, pour ne plus tenir compte de la case "affichage public"
+								// dans la liste des adhérents, commenter le premier new Operator()
                                 new Operator(
                                     'bool_display_info',
                                     '=',

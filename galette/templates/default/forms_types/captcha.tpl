@@ -3,7 +3,7 @@
 {block name="component"}
     {assign var="type" value="password"}
     {assign var="value" value=null}
-    {assign var="example" value={_T string="Please repeat in the field the password shown in the image."}}
+<!-- Modif RL Ligne supprimee     {assign var="example" value={_T string="Please repeat in the field the password shown in the image."}} -->
     {$smarty.block.parent}
 {/block}
 
