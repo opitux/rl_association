@@ -1,5 +1,5 @@
 # Header entry was created by Lokalize.
-# 
+#
 # Alexandrine "Maman" Cwiklinski, 2012, 2013, 2014, 2015.
 # Johan Cwiklinski <johan@x-tnd.be>, 2017. #zanata
 # Jean-Baptiste Holcroft <jean-baptiste@holcroft.fr>, 2018. #zanata
@@ -895,8 +895,9 @@ msgid "Requested label does not exists!"
 msgstr "L’intitulé demandé n’existe pas !"
 
 #: ../includes/fields_defs/members_fields.php:220
+# Modif Opitux
 msgid "Other informations:"
-msgstr "Autres informations&nbsp;:"
+msgstr "Informations publiques&nbsp;:"
 
 #: ../templates/default/preferences.tpl:382 ../templates/default/preferences.tpl:383
 #: ../templates/default/preferences.tpl:388 ../templates/default/preferences.tpl:389
@@ -5137,8 +5138,9 @@ msgid "Up to date members"
 msgstr "Adhérents à jour"
 
 #: ../includes/fields_defs/members_fields.php:212
+# Modif Opitux
 msgid "Other informations (admin):"
-msgstr "Autres informations (admin)&nbsp;:"
+msgstr "Autres informations (réservées au bureau)&nbsp;:"
 
 #: ../templates/default/gestion_textes.tpl:54 ../templates/default/gestion_pdf.tpl:26
 msgid "Your organisation slogan"
