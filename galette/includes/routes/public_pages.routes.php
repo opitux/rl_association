@@ -46,7 +46,10 @@ $showPublicPages = function ($request, $response, $next) use ($container) {
         $this->flash->addMessage('error', _T("Unauthorized"));
 
         return $response
-            ->withStatus(403)
+		// BEGIN MODIF Opitux
+		// Suppression de la 403 pour vers la page d'identification plutôt qu'un page blanche pour les pages publiques
+            // ->withStatus(403)
+		// END MODIF Opitux
             ->withHeader(
                 'Location',
                 $this->router->pathFor('slash')
